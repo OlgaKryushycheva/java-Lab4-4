@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -21,10 +24,7 @@ public class VegetableRepository {
      * @return list of vegetables described in the file
      */
     public List<Vegetable> loadFromResource(String resourcePath) {
-        InputStream stream = VegetableRepository.class.getClassLoader().getResourceAsStream(resourcePath);
-        if (stream == null) {
-            throw new IllegalStateException("Resource not found: " + resourcePath);
-        }
+        InputStream stream = resolveResourceStream(resourcePath);
 
         List<Vegetable> vegetables = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
@@ -52,5 +52,36 @@ public class VegetableRepository {
             throw new IllegalStateException("Unable to read resource: " + resourcePath, e);
         }
         return vegetables;
+    }
+
+    private InputStream resolveResourceStream(String resourcePath) {
+        InputStream stream = VegetableRepository.class.getClassLoader().getResourceAsStream(resourcePath);
+        if (stream != null) {
+            return stream;
+        }
+
+        Path path = Paths.get(resourcePath);
+        if (Files.exists(path)) {
+            try {
+                return Files.newInputStream(path);
+            } catch (IOException e) {
+                throw new IllegalStateException("Unable to open resource file: " + path, e);
+            }
+        }
+
+        Path sourceResource = Paths.get("src", "main", "resources").resolve(resourcePath);
+        if (Files.exists(sourceResource)) {
+            try {
+                return Files.newInputStream(sourceResource);
+            } catch (IOException e) {
+                throw new IllegalStateException("Unable to open resource file: " + sourceResource, e);
+            }
+        }
+
+        throw new IllegalStateException(
+                "Resource not found: " + resourcePath +
+                        ". Ensure it is on the classpath or available at ./" + resourcePath +
+                        " or ./src/main/resources/" + resourcePath
+        );
     }
 }
