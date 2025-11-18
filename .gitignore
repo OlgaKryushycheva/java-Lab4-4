@@ -10,7 +10,6 @@ out/
 *.class
 target/
 
-
 ### Eclipse ###
 .apt_generated
 .classpath
