@@ -1,7 +1,7 @@
 package com.example.chef;
 
 /**
- * Root vegetables like carrot or beetroot.
+ * Коренеплід (наприклад, морква або буряк).
  */
 public class RootVegetable extends Vegetable {
     private final double rootLengthInCm;
@@ -18,6 +18,6 @@ public class RootVegetable extends Vegetable {
 
     @Override
     public String getDescription() {
-        return String.format("Root (%.1f cm)", rootLengthInCm);
+        return String.format("Коренеплід (%.1f см)", rootLengthInCm);
     }
 }

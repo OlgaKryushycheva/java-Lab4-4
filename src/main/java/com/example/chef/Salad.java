@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Represents a salad composed of different vegetables.
+ * Модель салату, що складається з різних овочів.
  */
 public class Salad {
     private final String name;

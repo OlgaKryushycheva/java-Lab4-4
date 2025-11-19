@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Entry point for the console program "Шеф-кухар".
+ * Точка входу до консольної програми «Шеф-кухар».
  */
 public final class ChefApplication {
     private ChefApplication() {

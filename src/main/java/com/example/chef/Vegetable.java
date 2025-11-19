@@ -1,9 +1,10 @@
 package com.example.chef;
 
+import java.util.Locale;
 import java.util.Objects;
 
 /**
- * Base class for any vegetable that can be placed into a salad.
+ * Базовий клас для будь-якого овоча, який можна додати до салату.
  */
 public abstract class Vegetable {
     private final String name;
@@ -12,10 +13,10 @@ public abstract class Vegetable {
     private final Freshness freshness;
 
     protected Vegetable(String name, double caloriesPer100g, double weightInGrams, Freshness freshness) {
-        this.name = Objects.requireNonNull(name, "name");
+        this.name = Objects.requireNonNull(name, "назва");
         this.caloriesPer100g = caloriesPer100g;
         this.weightInGrams = weightInGrams;
-        this.freshness = Objects.requireNonNull(freshness, "freshness");
+        this.freshness = Objects.requireNonNull(freshness, "свіжість");
     }
 
     public String getName() {
@@ -35,22 +36,22 @@ public abstract class Vegetable {
     }
 
     /**
-     * Calculates calories contributed by this vegetable in the salad.
+     * Обчислює кількість калорій, яку додає овоч у салаті.
      *
-     * @return total calories for this ingredient instance
+     * @return сумарна калорійність цього інгредієнта
      */
     public double getTotalCalories() {
         return (caloriesPer100g * weightInGrams) / 100.0;
     }
 
     /**
-     * Short description including class-specific details.
+     * Короткий опис із клас-специфічними деталями.
      */
     public abstract String getDescription();
 
     @Override
     public String toString() {
-        return String.format("%s [%s], %.1f kcal/100g, weight %.1fg, freshness %s", getDescription(),
+        return String.format(Locale.ROOT, "%s [%s], %.1f ккал/100 г, вага %.1f г, свіжість: %s", getDescription(),
                 name, caloriesPer100g, weightInGrams, freshness);
     }
 }

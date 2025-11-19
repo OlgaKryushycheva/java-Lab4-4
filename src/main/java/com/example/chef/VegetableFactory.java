@@ -1,7 +1,7 @@
 package com.example.chef;
 
 /**
- * Creates vegetables based on the type string loaded from configuration.
+ * Створює овочі за типом, вказаним у конфігураційному файлі.
  */
 public final class VegetableFactory {
     private VegetableFactory() {
@@ -15,7 +15,7 @@ public final class VegetableFactory {
             case "root" -> new RootVegetable(name, caloriesPer100g, weightInGrams, freshness, extraParameter);
             case "fruit" -> new FruitVegetable(name, caloriesPer100g, weightInGrams, freshness,
                     (int) Math.round(extraParameter));
-            default -> throw new IllegalArgumentException("Unsupported vegetable type: " + type);
+            default -> throw new IllegalArgumentException("Непідтримуваний тип овоча: " + type);
         };
     }
 }

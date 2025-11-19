@@ -1,8 +1,8 @@
-# type,name,caloriesPer100g,weight,freshness,extra
-# extra stands for leaf count, root length (cm) or seed count depending on vegetable type
-LEAFY,Spinach,23,50,FRESH,120
-LEAFY,Arugula,25,40,FRESH,60
-ROOT,Carrot,41,80,FRESH,15
-ROOT,Beetroot,43,90,FRESH,12
-FRUIT,Tomato,18,90,FRESH,250
-FRUIT,Cucumber,16,100,FRESH,300
+# тип,name,caloriesPer100g,weight,freshness,extra
+# extra означає кількість листків, довжину кореня (см) або кількість насінин залежно від типу
+LEAFY,Шпинат,23,50,FRESH,120
+LEAFY,Рукола,25,40,FRESH,60
+ROOT,Морква,41,80,FRESH,15
+ROOT,Буряк,43,90,FRESH,12
+FRUIT,Помідор,18,90,FRESH,250
+FRUIT,Огірок,16,100,FRESH,300

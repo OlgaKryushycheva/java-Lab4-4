@@ -1,7 +1,7 @@
 package com.example.chef;
 
 /**
- * Leafy vegetables such as spinach or lettuce.
+ * Листовий овоч (наприклад, шпинат чи салат).
  */
 public class LeafyVegetable extends Vegetable {
     private final int leafCount;
@@ -17,6 +17,6 @@ public class LeafyVegetable extends Vegetable {
 
     @Override
     public String getDescription() {
-        return String.format("Leafy (%d leaves)", leafCount);
+        return String.format("Листовий (%d листків)", leafCount);
     }
 }

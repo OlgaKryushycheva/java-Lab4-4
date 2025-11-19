@@ -1,7 +1,7 @@
 package com.example.chef;
 
 /**
- * Vegetables that are technically fruits like tomatoes or cucumbers.
+ * Овочі з плодами (помідор, огірок тощо).
  */
 public class FruitVegetable extends Vegetable {
     private final int seedCount;
@@ -18,6 +18,6 @@ public class FruitVegetable extends Vegetable {
 
     @Override
     public String getDescription() {
-        return String.format("Fruit (%d seeds)", seedCount);
+        return String.format("Плід (%d насінин)", seedCount);
     }
 }

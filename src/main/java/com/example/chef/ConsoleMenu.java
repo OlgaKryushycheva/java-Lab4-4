@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * Simple console UI for interacting with a salad.
+ * Проста консольна взаємодія з обраним салатом.
  */
 public class ConsoleMenu {
     private final Salad salad;

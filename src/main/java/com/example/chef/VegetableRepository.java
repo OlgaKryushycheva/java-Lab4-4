@@ -13,15 +13,15 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Loads vegetables from a CSV resource that describes a salad recipe.
+ * Завантажує овочі з CSV-ресурсу, що описує рецепт салату.
  */
 public class VegetableRepository {
 
     /**
-     * Reads vegetables from a resource placed on the classpath.
+     * Зчитує овочі з ресурсу, розташованого у classpath.
      *
-     * @param resourcePath path relative to the classpath root, e.g. {@code data/vegetables.csv}
-     * @return list of vegetables described in the file
+     * @param resourcePath шлях відносно кореня classpath, наприклад {@code data/vegetables.csv}
+     * @return список овочів, описаних у файлі
      */
     public List<Vegetable> loadFromResource(String resourcePath) {
         InputStream stream = resolveResourceStream(resourcePath);
@@ -49,7 +49,7 @@ public class VegetableRepository {
                 vegetables.add(VegetableFactory.create(type, name, caloriesPer100g, weight, freshness, extra));
             }
         } catch (IOException e) {
-            throw new IllegalStateException("Unable to read resource: " + resourcePath, e);
+            throw new IllegalStateException("Не вдалося прочитати ресурс: " + resourcePath, e);
         }
         return vegetables;
     }
@@ -65,7 +65,7 @@ public class VegetableRepository {
             try {
                 return Files.newInputStream(path);
             } catch (IOException e) {
-                throw new IllegalStateException("Unable to open resource file: " + path, e);
+                throw new IllegalStateException("Не вдалося відкрити файл ресурсу: " + path, e);
             }
         }
 
@@ -74,14 +74,14 @@ public class VegetableRepository {
             try {
                 return Files.newInputStream(sourceResource);
             } catch (IOException e) {
-                throw new IllegalStateException("Unable to open resource file: " + sourceResource, e);
+                throw new IllegalStateException("Не вдалося відкрити файл ресурсу: " + sourceResource, e);
             }
         }
 
         throw new IllegalStateException(
-                "Resource not found: " + resourcePath +
-                        ". Ensure it is on the classpath or available at ./" + resourcePath +
-                        " or ./src/main/resources/" + resourcePath
+                "Ресурс не знайдено: " + resourcePath +
+                        ". Переконайтеся, що він доступний у classpath або за шляхами ./" + resourcePath +
+                        " чи ./src/main/resources/" + resourcePath
         );
     }
 }
